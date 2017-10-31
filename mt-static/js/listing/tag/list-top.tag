@@ -10,7 +10,7 @@
         <virtual data-is="list-filter"></virtual>
         <table data-is="list-table"
           id="{ opts.objectType }-table"
-          class="table mt-table list-{ opts.objectType }"
+          class="table mt-table"
         >
         </table>
       </div>
