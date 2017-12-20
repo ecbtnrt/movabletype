@@ -3485,7 +3485,7 @@ sub _hdlr_app_statusmsg {
     $class = defined $class ? qq{alert alert-$class} : "alert alert-info";
     my $close = '';
     if ( $id && ( $args->{can_close} || ( !exists $args->{can_close} ) ) ) {
-        $class .= ' alert-dismissable';
+        $class .= ' alert-dismissible';
         $close
             = qq{<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>};
     }
