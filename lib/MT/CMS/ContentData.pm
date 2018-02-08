@@ -344,10 +344,16 @@ sub save {
         or return $app->errtrans("Invalid request.");
     my $perms = $app->permissions or return $app->permission_denied();
 
+    my $content_type_id = $app->param('content_type_id')
+        or return $app->errtrans("Invalid request.");
+    my $content_type = MT::ContentType->load($content_type_id);
+
     my $content_data_id = $app->param('id');
     if ( !$content_data_id ) {
         return $app->permission_denied()
-            unless $perms->can_do('create_new_content_data');
+            unless $perms->can_do('create_new_content_data')
+            || $perms->can_do(
+            'create_new_content_data_' . $content_type->unique_id );
     }
     else {
         return $app->permission_denied()
@@ -357,11 +363,8 @@ sub save {
 
     my $blog_id = $app->param('blog_id')
         or return $app->errtrans("Invalid request.");
-    my $content_type_id = $app->param('content_type_id')
-        or return $app->errtrans("Invalid request.");
 
-    my $content_type = MT::ContentType->load($content_type_id);
-    my $field_data   = $content_type->fields;
+    my $field_data = $content_type->fields;
 
     my $content_field_types = $app->registry('content_field_types');
 
