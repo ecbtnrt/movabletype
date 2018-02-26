@@ -100,4 +100,9 @@ sub field_value_handler {
     return $value;
 }
 
+sub ss_validator {
+    my ( $app, $field_data, $data ) = @_;
+    'Sample error in multi_line_text field.';
+}
+
 1;

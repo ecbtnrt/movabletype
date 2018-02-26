@@ -148,6 +148,8 @@ sub _multi_line_text_registry {
                 use_blank => 1,
             },
         },
+        ss_validator =>
+            '$Core::MT::ContentFieldType::MultiLineText::ss_validator',
         theme_data_import_handler =>
             '$Core::MT::ContentFieldType::MultiLineText::theme_data_import_handler',
         options_html => 'content_field_type_options/multi_line_text.tmpl',
